@@ -1,4 +1,4 @@
-package com.fermelloG3.CursoSpring.models;
+package com.fermelloG3.CursoSpring.model.entities;
 
 public class Cliente {
     private int id;

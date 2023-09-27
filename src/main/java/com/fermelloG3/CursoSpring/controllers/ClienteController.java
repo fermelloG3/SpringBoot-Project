@@ -1,6 +1,6 @@
 package com.fermelloG3.CursoSpring.controllers;
 
-import com.fermelloG3.CursoSpring.models.Cliente;
+import com.fermelloG3.CursoSpring.model.entities.Cliente;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
