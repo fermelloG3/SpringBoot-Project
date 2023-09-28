@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
 import java.util.Optional;
 
 @RestController
@@ -15,7 +16,8 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    @PostMapping
+    //@PostMapping
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.PUT})
     public @ResponseBody Produto novoProduto(@Valid Produto produto){
         produtoRepository.save(produto);
         return produto;
