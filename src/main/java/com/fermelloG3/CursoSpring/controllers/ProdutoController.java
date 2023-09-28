@@ -14,9 +14,14 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
 
     @PostMapping
-    public @ResponseBody Produto retornarProduto(@Valid Produto produto){
+    public @ResponseBody Produto novoProduto(@Valid Produto produto){
         produtoRepository.save(produto);
         return produto;
+    }
+
+    @GetMapping
+    public Iterable<Produto> retornarProduto(){
+        return produtoRepository.findAll();
     }
 
 }
