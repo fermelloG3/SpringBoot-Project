@@ -4,6 +4,8 @@ import com.fermelloG3.CursoSpring.model.entities.Produto;
 import com.fermelloG3.CursoSpring.model.repositories.ProdutoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
@@ -30,6 +32,12 @@ public class ProdutoController {
     @GetMapping(path = "/{id}")
     public Optional<Produto> obterProdutoPorId(@PathVariable int id){
         return produtoRepository.findById(id);
+    }
+    @GetMapping(path = "/pagina/{numerodepagina}/{qtdepagina}")
+    public Iterable<Produto> obterProdutoPorPagina(@PathVariable int numerodepagina,
+                                                   @PathVariable int qtdepagina){
+        Pageable page = PageRequest.of(numerodepagina,qtdepagina);
+        return produtoRepository.findAll(page);
     }
 
     @DeleteMapping(path = "/{id}")
